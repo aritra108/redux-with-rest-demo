@@ -8,7 +8,7 @@ import "./Contact.css";
 import api from "../api/contacts";
 import { deleteContact, updateContact } from "../action/actionCreators";
 
-const Contact = ({ id, name, email }) => {
+const Contact = ({ id, name, email, image }) => {
   const dispatch = useDispatch();
 
   const [update, setUpdate] = useState(false);
@@ -34,7 +34,7 @@ const Contact = ({ id, name, email }) => {
   return (
     <div className="contact">
       <div className="contact__left">
-        <Avatar className="contact__avatar" src="adasd" alt={name} />
+        <Avatar className="contact__avatar" src={image} alt={name} />
         <div className="contact__leftDetails">
           <h4 className={update && "hide"}>{name}</h4>
           <p className={update && "hide"}>{email}</p>

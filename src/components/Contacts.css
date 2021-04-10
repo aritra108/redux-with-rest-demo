@@ -1,6 +1,8 @@
 .contacts {
     flex: 0.6;
-    margin-top: 8vh;
+    width: 100%;
+    max-width: 450px;
+    min-width: 350px;
     padding-right: 20px;
 }
 
@@ -13,17 +15,11 @@
 
 @media (max-width: 830px) {
     .contacts {
-        min-width: 400px;
+        margin-top: 30px;
+        padding: 0 15px
     }
 
     .contacts > h1 {
         text-align: center;
-    }
-}
-
-@media (max-width: 475px) {
-    .contacts {
-        width: 100%;
-        min-width: 0px;
     }
 }

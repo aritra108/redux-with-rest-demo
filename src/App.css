@@ -1,12 +1,16 @@
-.app {
+.app__body {
   display: flex;
   align-items: flex-start;
-  padding: 20px 30px;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px;
 }
 
 @media (max-width: 830px) {
-  .app {
+  .app__body {
     flex-direction: column-reverse;
     align-items:  center;
+    padding: 30px 15px;
   }
 }

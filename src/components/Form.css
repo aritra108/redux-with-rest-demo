@@ -3,13 +3,13 @@
     padding: 20px;
     width: 100%;
     max-width: 350px;
+    min-width: 280px;
     margin: 0 auto;
-    margin-top: 8vh;
     border: 1px solid lightgray;
     border-radius: 7px;
     background-color: white;
 }
-
+ 
 .form > h2 {
     font-weight: 400;
     font-size: 26px;
@@ -25,7 +25,7 @@
 .form__form > input {
     height: 40px;
     width: 100%;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     padding: 6px 8px;
     outline: none;
     border: 1px solid #000080;
@@ -39,9 +39,45 @@
     -moz-box-shadow: 0px 0px 7px 1px rgba(0,0,128,0.22);
 }
 
+/* Adding Profile Pic */
+.form__profilePic {
+}
+
+.form__profilePic > h4 {
+    font-size: 17px;
+}
+
+.form__profilePic > input {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Progress Bar */
+.form__form .MuiLinearProgress-root {
+    margin-top: 15px;
+}
+
+.form__form .MuiLinearProgress-root.hide {
+    display: none;
+}
+
+.form__form .MuiLinearProgress-bar {
+    background-color: navy !important;
+}
+
+/* Form Feedback */
+.form__feedback {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 17px;
+}
+
+/* Button */
 .form__form > button {
     display: block;
+    width: 100%;
     margin: 0 auto;
+    margin-top: 25px;
     padding: 10px 20px;
     background-color: navy;
     color: white;

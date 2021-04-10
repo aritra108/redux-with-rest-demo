@@ -16,8 +16,8 @@ const Contacts = () => {
     <div className="contacts">
       <h1>My Contacts</h1>
       <div className="contacts__container">
-        {contacts?.map(({ id, name, email }) => (
-          <Contact key={id} id={id} name={name} email={email} />
+        {contacts?.map(({ id, name, email, image }) => (
+          <Contact key={id} id={id} name={name} email={email} image={image} />
         ))}
       </div>
     </div>

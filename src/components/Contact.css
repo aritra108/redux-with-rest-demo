@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 400px;
     margin-top: 20px;
     padding: 10px 15px;
     border: 1px solid lightgray;
@@ -95,7 +94,5 @@
 
 @media (max-width: 830px) {
     .contact {
-        margin: 0 auto;
-        margin-top: 20px;
     }
 }

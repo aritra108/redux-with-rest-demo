@@ -1,20 +1,60 @@
 import api from "../api/contacts";
+import { storage } from "../firebase/firebase";
 import {
   ADD_CONTACT,
   DELETE_CONTACT,
   FETCH_CONTACTS,
-  SET_CONTACTS,
+  SET_UPLOAD_PROGRESS,
+  UPDATE_CONTACT,
 } from "./actionTypes";
-import { UPDATE_CONTACT } from "./actionTypes";
 
-export const addContact = (contact) => {
+export const addContact = ({ id, name, email, image }) => {
   return async (dispatch) => {
-    const response = await api.post("/contacts", contact);
+    // Upload image to firebase
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
 
-    dispatch({
-      type: ADD_CONTACT,
-      payload: response.data,
-    });
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Progress Function
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        dispatch(setUploadProgress(progress));
+      },
+      (error) => {
+        // Error Handler
+        alert(error.message);
+      },
+      () => {
+        // Completion Function
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            // Create the contact object
+            const contact = {
+              id,
+              name,
+              email,
+              image: url,
+            };
+
+            // Post to the REST API
+            const response = await api.post("/contacts", contact);
+
+            // Update the Store State
+            dispatch({
+              type: ADD_CONTACT,
+              payload: response.data,
+            });
+
+            // Reset the progress to zero
+            dispatch(setUploadProgress(0));
+          });
+      }
+    );
   };
 };
 
@@ -51,5 +91,12 @@ export const deleteContact = (id) => {
       type: DELETE_CONTACT,
       payload: id,
     });
+  };
+};
+
+export const setUploadProgress = (value) => {
+  return {
+    type: SET_UPLOAD_PROGRESS,
+    payload: value,
   };
 };

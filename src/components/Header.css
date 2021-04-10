@@ -1,0 +1,33 @@
+.header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 9vh;
+    width: 100vw;
+    background-color: navy;
+    color: white;
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header Logo */
+.header__logo > h1 {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+@media(max-width: 450px) {
+    .header__logo > h1 {
+        font-size: 25px;
+    }
+}
